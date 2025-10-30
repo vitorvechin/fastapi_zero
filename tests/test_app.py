@@ -9,4 +9,11 @@ def test_root_deve_retornar_ola_mundo():
     client = TestClient(app)
     response = client.get('/')
     assert response.json() == {'message': 'Olá, mundo!'}
+    assert response.status_code == HTTPStatus.OKd
+
+
+def test_exercicio_aula_02_deve_retornar_html():
+    client = TestClient(app)
+    response = client.get('/exercicio-aula-02')
     assert response.status_code == HTTPStatus.OK
+    assert '<p>Olá, mundo!</p>' in response.text
